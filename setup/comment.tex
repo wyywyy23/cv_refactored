@@ -1,0 +1,61 @@
+%!TEX root = ../cv_yw.tex
+
+% Setup coffee stain
+\input{random.tex}
+\input{setup/coffee.tex}
+\usepackage{transparent}
+\newcount\picnum
+\newcount\tmpnum
+\randomi 20220110\relax
+\def\coffeehbox#1{\hbox to0pt{\kern\the\tmpnum mm #1 \hss}}
+\def\coffeevbox#1{\vbox to0pt{\kern\the\tmpnum mm #1 \vss}}
+\def\coffeerotbox#1{\rotatebox[origin=c]{\the\tmpnum}{#1}}
+\makeatletter
+\def\coffeepic#1{
+    \ifcase#1\transparent{\strip@pt\dimexpr \the\tmpnum pt / 300}\coffeeA%
+    \or \transparent{\strip@pt\dimexpr \the\tmpnum pt / 300}\coffeeB%
+    \or \transparent{.\the\tmpnum}\coffeeC%
+    \or \transparent{\strip@pt\dimexpr \the\tmpnum pt / 600}\coffeeD \fi
+}
+\makeatother
+\newcommand\randomcoffee{
+    \setrannum\picnum{0}{3}% coffee stain shape 0~3
+    \setrannum\tmpnum{99}{99}\edef\coffeescale{.\the\tmpnum}% scale 1~99
+    \setrannum\tmpnum{-50}{-0}\coffeehbox{ % x offset
+        \setrannum\tmpnum{-10}{0}\coffeevbox{% y offset
+            \setrannum\tmpnum{-90}{90}\coffeerotbox{ % rotation
+                \setrannum\tmpnum{10}{60}\coffeepic\picnum}% transparency
+        }%
+    }%
+}
+
+% Highlighting
+\usepackage{soul}
+\colorlet{YellowMarker}{Goldenrod!20}
+\sethlcolor{YellowMarker}
+\soulregister\sout7
+\soulregister\ac7
+\soulregister\acp7
+\soulregister\emph7
+\soulregister\textit7
+\soulregister\textbf7
+
+% Commenting
+\usepackage[inline, nomargin, marginclue, multiuser, final]{fixme}
+\fxsetup{theme=color}
+\usepackage{mdframed}
+\mdfdefinestyle{hl}{innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, backgroundcolor=lightyellow, linewidth=0}
+\makeatletter
+\renewcommand*\FXLayoutInline[3]{%
+    \@fxdocolon{#3}{%
+        \@fxuseface{inline}%
+        \begingroup
+        \color{fx#1}\ignorespaces\hl{#3\mbox{\@fxcolon}#2}%
+        \endgroup}}
+\renewcommand*\FXEnvLayoutColorBegin[2]{%
+    \@fxdocolon{#2}%
+    \@fxuseface{env}%
+    \begin{mdframed}[style=hl, fontcolor=fx#1]
+        \ignorespaces#2\@fxcolon\ignorespaces}
+        \renewcommand*\FXEnvLayoutColorEnd[2]{\end{mdframed}}
+\makeatother

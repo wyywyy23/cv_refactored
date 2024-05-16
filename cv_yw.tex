@@ -1,0 +1,48 @@
+%!TEX root = cv_yw.tex
+\documentclass[letterpaper,10pt]{article}
+
+% Choose theme color
+% See https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX#Accessing_additional_named_colors
+\def\theme{black}
+
+% Doc Name
+\def\docname{Curriculum Vitae}
+
+% Load Style
+\usepackage{wilcv}
+
+% Setup Commenting
+\newif\ifcoffee
+% \coffeetrue % comment out to remove coffee stains
+\input{setup/comment.tex}
+\FXRegisterAuthor{yw}{ywang}{Y.W.}
+
+% Bibliography Types
+\input{setup/bibtypes.tex}
+
+% Load Bibliography
+\bibliography{papers}
+\nocite{*}
+
+% Bold Name in Bibliography
+\boldname{Wang}{Yuyang}{Y.}
+
+\begin{document}
+
+% Heading
+\headline{Yuyang \textsc{Wang}}{\connect{%
+        \address{Columbia Nano Initiative, Columbia University\\530 West 120th St, New York, NY 10027\\}}{%
+        \tel{+1~(781)~428-0408}}{%
+        \email{yw3831@columbia.edu}}{%
+        \website{wangyy.phd}}
+}
+
+% Use \RaggedRight for the one from ragged2e package
+\raggedright
+
+% Import Sections
+\import{sections/}{interest}
+\import{sections/}{appointment}
+\import{sections/}{education}
+
+\end{document}

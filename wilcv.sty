@@ -105,7 +105,7 @@
 \newcommand{\boxLevelOne}[2][]{
     \setkeys{boxLevelOne}{list=\@empty}
     \setkeys{boxLevelOne}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0.01\textwidth, rightmargin=0.01\textwidth, skipabove=0in, skipbelow=0in, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
+    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0, rightmargin=1em, skipabove=0, skipbelow=0, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
         \ifthenelse{\equal{\bOne@list}{}}{#2}{
             \ifthenelse{\equal{\bOne@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
         }
@@ -115,7 +115,7 @@
 \newcommand{\boxLevelTwo}[2][]{
     \setkeys{boxLevelTwo}{list=\@empty}
     \setkeys{boxLevelTwo}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0.01\textwidth, rightmargin=0in, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
+    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=1em, rightmargin=0, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
         \ifthenelse{\equal{\bTwo@list}{}}{#2}{
             \ifthenelse{\equal{\bTwo@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
         }
@@ -133,12 +133,22 @@
 % List entries
 \newcommand{\entryTwoByTwo}[5][]{
     \item[#1]
-    \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{\linewidth-\itemindent}{l@{\extracolsep{\fill}}r}
         #2 & #3 \\
         {\small #4} & {\small #5}
     \end{tabular*}
 }
-\newcommand{\note}[1]{\item\small{#1}}
+
+\newcommand{\txt}[2][]{
+    \RaggedRight
+    \item[#1]
+    #2
+}
+
+\newcommand{\note}[2][\textendash]{
+    \item[#1]
+    \small #2
+}
 
 % Section Title
 \newcommand\ruleafter[1]{#1~\xrfill[0.5ex]{1pt}[\theme]}

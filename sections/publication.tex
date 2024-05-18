@@ -1,0 +1,31 @@
+%!TEX root = ../cv_yw.tex
+\section{Publications}
+
+\boxLevelOne[list=regular]{
+
+    % \txt{\textbf{Book Chapter}}
+    % \newrefcontext[labelprefix=B]
+    % \printbibliography[heading=none, omitnumbers=false, type=incollection]
+
+    \txt{\textbf{Refereed Journal Articles}}
+    \newrefcontext[labelprefix=J]
+    \printbibliography[heading=none, omitnumbers=false, type=article]
+
+    \txt{\textbf{Refereed Conference Proceedings}}
+    \newrefcontext[labelprefix=C]
+    \printbibliography[heading=none, omitnumbers=false, type=inproceedings]
+
+    % \filbreak
+
+    \txt{\textbf{Invited Conference Papers}}
+    \newrefcontext[labelprefix=I]
+    \printbibliography[heading=none, omitnumbers=false, type=invitedc]
+
+    \defbibfilter{inprep}{%
+        \type{prepc} \or \type{prepj}
+    }
+    \txt{\textbf{Under Review and In Preparation}}
+    \newrefcontext[labelprefix=P]
+    \printbibliography[heading=none, omitnumbers=false, filter=inprep]
+
+}

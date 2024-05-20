@@ -135,11 +135,19 @@
 }
 
 % List entries
-\newcommand{\entryTwoByTwo}[5][]{
+\newcommand{\entryTwoAndTwo}[5][]{
     \item[#1]
     \begin{tabular*}{\linewidth-\itemindent}{l@{\extracolsep{\fill}}r}
         #2 & #3 \\
         {\small #4} & {\small #5}
+    \end{tabular*}
+}
+
+\newcommand{\entryThreeAndTwo}[6][]{
+    \item[#1]
+    \begin{tabular*}{\linewidth-\itemindent}{l@{\hspace{\mytabcolsep}}l@{\extracolsep{\fill}}rr}
+        #2 & #3 & \multicolumn{2}{r}{#4} \\
+        \multicolumn{3}{l}{\small #5} & \small{#6}
     \end{tabular*}
 }
 
@@ -169,6 +177,8 @@
 \fancyfoot[R]{{\scshape \MakeLowercase{\docname}}\quad{\LARGE\sfrac{\thepage}{\pageref*{LastPage}}}}
 
 % Remove Table Column Sep
+\newlength{\mytabcolsep}
+\setlength{\mytabcolsep}{\tabcolsep}
 \setlength{\tabcolsep}{0in}
 
 % Headline with variable number of arguments

@@ -7,19 +7,15 @@
     % \newrefcontext[labelprefix=B]
     % \printbibliography[heading=none, omitnumbers=false, type=incollection]
 
-    \txt{\textbf{Refereed Journal Articles}}
+    \txt{\textbf{Journal Articles}}
     \newrefcontext[labelprefix=J]
     \printbibliography[heading=none, omitnumbers=false, type=article]
 
-    \txt{\textbf{Refereed Conference Proceedings}}
+    \txt{\textbf{Conference Proceedings}}
     \newrefcontext[labelprefix=C]
     \printbibliography[heading=none, omitnumbers=false, type=inproceedings]
 
     % \filbreak
-
-    \txt{\textbf{Invited Conference Papers}}
-    \newrefcontext[labelprefix=I]
-    \printbibliography[heading=none, omitnumbers=false, type=invitedc]
 
     \defbibfilter{inprep}{%
         \type{prepc} \or \type{prepj}

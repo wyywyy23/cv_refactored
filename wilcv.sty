@@ -49,6 +49,18 @@
 % Breakable Boxes
 \usepackage{mdframed}
 
+% Badge using tcolorbox
+\usepackage[skins]{tcolorbox}
+\newtcbox{\badgeinvited}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.1pt,top=0mm,bottom=0mm,
+    right=0mm,left=4mm,arc=1pt,boxsep=2pt,
+    colframe=black,coltext=black,colback=black!10,
+    overlay={\begin{tcbclipinterior}\fill[black] (frame.south west)
+                rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=0] {\faChalkboardTeacher} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+\MakeRobust\badgeinvited
+\ifdefined\pdfstringdefDisableCommands
+    \pdfstringdefDisableCommands{\def\badgeinvited#1{'#1'}}
+\fi
+
 % Key Value
 \usepackage{keyval}
 
@@ -81,12 +93,21 @@
 
 % Bibliography
 \usepackage[style=ieee,url=false,doi=true,maxbibnames=99,sorting=ydnt,dashed=false,defernumbers=true]{biblatex}
+\renewbibmacro{finentry}{\finentry%
+    \iffieldundef{annotation}
+    {}
+    {\printfield{annotation}\finentry}}
 \DeclareFieldFormat{labelnumberwidth}{\textup{#1}}
 \DeclareFieldFormat{doi}{%
     \raisebox{-0.25pt}{\scalebox{0.925}{\aiDoi}}\,%
     \ifhyperref
     {\href{https://doi.org/#1}{\nolinkurl{#1}}}
     {\nolinkurl{#1}}}
+\DeclareFieldFormat{annotation}{%
+    \quad\badgeinvited{\scriptsize{#1}}}
+\DeclareFieldFormat{note}{%
+    #1.}
+\renewcommand*{\finentrypunct}{}
 \AtEveryBibitem{
     \clearfield{isbn}
     \clearfield{issn}

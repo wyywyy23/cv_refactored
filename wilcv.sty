@@ -156,6 +156,21 @@
 }
 
 % List entries
+\newcommand{\entryTwo}[3][]{
+    \item[#1]
+    \begin{tabular*}{\linewidth-\itemindent}{l@{\extracolsep{\fill}}r}
+        #2 & #3
+    \end{tabular*}
+    \vspace{-\parskip}
+}
+
+\newcommand{\entryTwoSmall}[3][\textendash]{
+    \item[#1]
+    \begin{tabular*}{\linewidth-\itemindent}{l@{\extracolsep{\fill}}r}
+        {\small #2} & {\small #3}
+    \end{tabular*}
+}
+
 \newcommand{\entryTwoAndTwo}[5][]{
     \item[#1]
     \begin{tabular*}{\linewidth-\itemindent}{l@{\extracolsep{\fill}}r}

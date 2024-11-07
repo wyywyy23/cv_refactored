@@ -86,6 +86,12 @@
 % If-Else
 \usepackage{ifthen}
 
+% Circled numbers
+\usepackage{circledsteps}          % black
+\pgfkeys{/csteps/inner color=white}
+\pgfkeys{/csteps/outer color=\theme}
+\pgfkeys{/csteps/fill color=\theme}
+
 % Hyperlinks
 \definecolor{link_col}{HTML}{5e81ac}
 \usepackage[colorlinks=true, allcolors=link_col]{hyperref}
@@ -147,6 +153,16 @@
     \end{mdframed}
 }
 
+% Two-column content
+\newcommand{\sideBySide}[2]{
+    \begin{minipage}[t]{0.50\textwidth}
+        #1
+    \end{minipage}%
+    \begin{minipage}[t]{0.50\textwidth}
+        #2
+    \end{minipage}%
+}
+
 % List: regular, compact, dense
 \newcommand{\listRegular}[1]{
     \begin{itemize}[leftmargin=*] #1 \end{itemize}
@@ -202,6 +218,20 @@
     \small #2
 }
 
+\newcommand{\letterIcon}[1]{
+    % Check if #1 is empty
+    \if\relax\detokenize{#1}\relax
+    \else\Circled{\footnotesize\textbf{#1}}\fi
+}
+\newcommand{\entryPerson}[5]{
+    \item[]%
+    \begin{tabular*}{0.97\textwidth}{l@{\hskip 6pt}l}
+        \textbf{#1} & \letterIcon{#2} \\
+        \multicolumn{2}{l}{\small\emph{#3}} \\
+        \multicolumn{2}{l}{\small#4} \\
+        \multicolumn{2}{l}{\small#5}
+    \end{tabular*}}
+
 % Section Title
 \newcommand\ruleafter[1]{#1~\xrfill[0.5ex]{1pt}[\theme]}
 \titleformat{\section}{%
@@ -249,21 +279,6 @@
 \newcommand{\website}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faGlobeAsia}}~\href{https://#1}{#1}}
 \newcommand{\linkedin}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faLinkedinIn}}~\href{https://www.linkedin.com/in/#1/}{#1}}
 \newcommand{\googleScholar}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faGraduationCap}}~\href{https://scholar.google.com/citations?user=#1}{Google Scholar}}
-
-% Two-column content
-\newcommand{\sidebyside}[2]{
-    \begin{minipage}[t]{0.50\textwidth}
-        #1
-    \end{minipage}%
-    \begin{minipage}[t]{0.50\textwidth}
-        #2
-    \end{minipage}%
-}
-
-
-
-
-
 
 % Make author name bold: https://tex.stackexchange.com/a/327046
 \newcommand*{\boldname}[3]{%

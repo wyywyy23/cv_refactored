@@ -53,7 +53,7 @@
 \usepackage[skins]{tcolorbox}
 \newtcbox{\badgeinvited}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.1pt,top=0mm,bottom=0mm,
     right=0mm,left=4mm,arc=1pt,boxsep=2pt,
-    colframe=black,coltext=black,colback=black!10,
+    colframe=black,coltext=black,colback=\theme!10,
     overlay={\begin{tcbclipinterior}\fill[black] (frame.south west)
                 rectangle node[text=white,font=\sffamily\bfseries\tiny,rotate=0] {\faChalkboard} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
 \MakeRobust\badgeinvited
@@ -89,8 +89,8 @@
 % Circled numbers
 \usepackage{circledsteps}          % black
 \pgfkeys{/csteps/inner color=\theme}
-\pgfkeys{/csteps/outer color=black!10}
-\pgfkeys{/csteps/fill color=black!10}
+\pgfkeys{/csteps/outer color=\theme!10}
+\pgfkeys{/csteps/fill color=\theme!10}
 
 % Longtable
 \usepackage{longtable}
@@ -108,7 +108,7 @@
     {\printfield{annotation}\finentry}}
 \DeclareFieldFormat{labelnumberwidth}{\textup{#1}}
 \DeclareFieldFormat{doi}{%
-    \raisebox{-0.25pt}{\scalebox{0.925}{\aiDoi}}\,%
+    \raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\aiDoi}}\,%
     \ifhyperref
     {\href{https://doi.org/#1}{\nolinkurl{#1}}}
     {\nolinkurl{#1}}}
@@ -292,12 +292,12 @@
 \makeatother
 % Connect shorthands
 \newcommand{\address}[1]{#1}
-\newcommand{\tel}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faMobile*}}~#1}
-\newcommand{\github}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faGithub}}~\href{https://github.com/#1/}{github.com/#1}}
-\newcommand{\email}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faAt}}~\href{mailto:#1}{#1}}
-\newcommand{\website}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faGlobeAsia}}~\href{https://#1}{#1}}
-\newcommand{\linkedin}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faLinkedinIn}}~\href{https://www.linkedin.com/in/#1/}{#1}}
-\newcommand{\googleScholar}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\faGraduationCap}}~\href{https://scholar.google.com/citations?user=#1}{Google Scholar}}
+\newcommand{\tel}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faMobile*}}~#1}
+\newcommand{\github}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGithub}}~\href{https://github.com/#1/}{github.com/#1}}
+\newcommand{\email}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faAt}}~\href{mailto:#1}{#1}}
+\newcommand{\website}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGlobeAsia}}~\href{https://#1}{#1}}
+\newcommand{\linkedin}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faLinkedinIn}}~\href{https://www.linkedin.com/in/#1/}{#1}}
+\newcommand{\googleScholar}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGraduationCap}}~\href{https://scholar.google.com/citations?user=#1}{Google Scholar}}
 
 % Make author name bold: https://tex.stackexchange.com/a/327046
 \newcommand*{\boldname}[3]{%

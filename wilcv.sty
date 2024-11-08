@@ -88,9 +88,9 @@
 
 % Circled numbers
 \usepackage{circledsteps}          % black
-\pgfkeys{/csteps/inner color=white}
-\pgfkeys{/csteps/outer color=\theme}
-\pgfkeys{/csteps/fill color=\theme}
+\pgfkeys{/csteps/inner color=\theme}
+\pgfkeys{/csteps/outer color=black!10}
+\pgfkeys{/csteps/fill color=black!10}
 
 % Longtable
 \usepackage{longtable}
@@ -113,8 +113,8 @@
     {\href{https://doi.org/#1}{\nolinkurl{#1}}}
     {\nolinkurl{#1}}}
 \DeclareFieldFormat{annotation}{%
-    \quad\badgeinvited{\scriptsize{#1}}}
-% \hspace{6pt}\letterIconTiny{#1}}
+    % \quad\badgeinvited{\scriptsize{#1}}}
+    \hspace{6pt}\raisebox{1pt}{\letterBadge{#1}}}
 \DeclareFieldFormat{note}{%
     #1.}
 \renewcommand*{\finentrypunct}{}
@@ -232,7 +232,7 @@
     \if\relax\detokenize{#1}\relax
     \else\Circled{\scriptsize\textbf{#1}}\fi
 }
-\newcommand{\letterIconTiny}[1]{
+\newcommand{\letterBadge}[1]{
     % Check if #1 is empty
     \if\relax\detokenize{#1}\relax
     \else\Circled{\tiny\textbf{#1}}\fi

@@ -92,6 +92,9 @@
 \pgfkeys{/csteps/outer color=\theme}
 \pgfkeys{/csteps/fill color=\theme}
 
+% Longtable
+\usepackage{longtable}
+
 % Hyperlinks
 \definecolor{link_col}{HTML}{5e81ac}
 \usepackage[colorlinks=true, allcolors=link_col]{hyperref}
@@ -111,6 +114,7 @@
     {\nolinkurl{#1}}}
 \DeclareFieldFormat{annotation}{%
     \quad\badgeinvited{\scriptsize{#1}}}
+% \hspace{6pt}\letterIconTiny{#1}}
 \DeclareFieldFormat{note}{%
     #1.}
 \renewcommand*{\finentrypunct}{}
@@ -136,7 +140,7 @@
 \newcommand{\boxLevelOne}[2][]{
     \setkeys{boxLevelOne}{list=\@empty}
     \setkeys{boxLevelOne}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0, rightmargin=1em, skipabove=0, skipbelow=0, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
+    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0, rightmargin=1em, skipabove=0, skipbelow=0, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false]
         \ifthenelse{\equal{\bOne@list}{}}{#2}{
             \ifthenelse{\equal{\bOne@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
         }
@@ -146,7 +150,7 @@
 \newcommand{\boxLevelTwo}[2][]{
     \setkeys{boxLevelTwo}{list=\@empty}
     \setkeys{boxLevelTwo}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=1em, rightmargin=0, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0]
+    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=1em, rightmargin=0, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false]
         \ifthenelse{\equal{\bTwo@list}{}}{#2}{
             \ifthenelse{\equal{\bTwo@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
         }
@@ -223,6 +227,16 @@
     \if\relax\detokenize{#1}\relax
     \else\Circled{\footnotesize\textbf{#1}}\fi
 }
+\newcommand{\letterIconSmall}[1]{
+    % Check if #1 is empty
+    \if\relax\detokenize{#1}\relax
+    \else\Circled{\scriptsize\textbf{#1}}\fi
+}
+\newcommand{\letterIconTiny}[1]{
+    % Check if #1 is empty
+    \if\relax\detokenize{#1}\relax
+    \else\Circled{\tiny\textbf{#1}}\fi
+}
 \newcommand{\entryPerson}[5]{
     \item[]%
     \begin{tabular*}{0.97\textwidth}{l@{\hskip 6pt}l}
@@ -231,10 +245,11 @@
         \multicolumn{2}{l}{\small#4} \\
         \multicolumn{2}{l}{\small#5}
     \end{tabular*}}
-\newcommand{\entryCourse}[]{
-    \item[#1]%
-
-}
+\newcommand{\entryCourse}[5][\textendash]{
+    \item[#1]
+    \begin{tabular*}{\linewidth-\itemindent}{p{4cm}l@{\hskip 6pt}l@{\extracolsep{\fill}}r}
+        {\small#2} & {\small#3} & \letterIconSmall{#4} & {\small#5}
+    \end{tabular*}}
 
 % Section Title
 \newcommand\ruleafter[1]{#1~\xrfill[0.5ex]{1pt}[\theme]}

@@ -305,6 +305,7 @@ TSWLatexianTemp*
 
 # Output
 .cache
+*.pdf
 
 # MacOS
 **.DS_Store

@@ -13,8 +13,9 @@ cv : $(SRC_CV).tex
 	$(COMPILE) -lualatex -outdir=$(CACHE_DIR) $(SRC_CV).tex
 	@cp $(CACHE_DIR)/$(SRC_CV).pdf .
 	
-clean :
-	@$(RM) $(CACHE_DIR) *.pdf
+clean : clean-cache
+	@$(RM) $(SRC_CV).pdf
 
 clean-cache :
 	@$(RM) $(CACHE_DIR)
+	@$(RM) indent.log

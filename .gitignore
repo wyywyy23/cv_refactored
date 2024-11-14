@@ -304,7 +304,7 @@ TSWLatexianTemp*
 *.*-SAVE-ERROR
 
 # Output
-cv_yw.pdf
+.cache
 
 # MacOS
 **.DS_Store

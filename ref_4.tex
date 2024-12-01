@@ -1,0 +1,55 @@
+%!TEX root = ref_4.tex
+\documentclass[letterpaper,10pt]{article}
+
+% Choose theme color
+% See https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX#Accessing_additional_named_colors
+\def\theme{black}
+
+% Doc Name
+\def\docname{Contact References}
+
+% Load Style
+\usepackage{wilcv}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\scshape \MakeLowercase{Yuyang Wang}}
+\fancyfoot[R]{{\scshape \MakeLowercase{\docname{}}}\quad{\LARGE\sfrac{\thepage}{\pageref*{LastPage}}}}
+
+% Setup Commenting
+\newif\ifcoffee
+% \coffeetrue % comment out to remove coffee stains
+\input{setup/comment.tex}
+\FXRegisterAuthor{yw}{ywang}{Y.W.}
+
+% Bibliography Types
+\input{setup/bibtypes.tex}
+
+% Load Bibliography
+\bibliography{papers}
+\nocite{*}
+
+\def\myName{Yuyang Wang}
+% Bold Name in Bibliography
+\boldname{Wang}{Yuyang}{Y.}
+
+\begin{document}
+
+%!TEX root = ../cv_yw.tex
+\section{Contact References}
+
+\boxLevelOne[list=regular]{
+    \blockTitle{\letterIcon{A}~: from academia;\quad \letterIcon{I}~: from industry}
+
+    \medskip
+    \input{sections/refs/bergman.tex}
+    \medskip
+    \input{sections/refs/cheng.tex}
+    \medskip
+    \input{sections/refs/bowers.tex}
+    \medskip
+    \input{sections/refs/beausoleil.tex}
+
+}
+
+\end{document}

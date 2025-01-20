@@ -50,7 +50,7 @@ pub_list : $(SEC_PUB_LIST).tex
 	@cp $(CACHE_DIR)/$(SEC_PUB_LIST).pdf .
 	
 clean : clean-cache
-	@$(RM) $(SRC_CV).pdf $(SRC_REF3).pdf $(SRC_REF4).pdf $(SEC_PUB_LIST).pdf
+	@$(RM) $(SRC_CV).pdf $(SRC_REF3).pdf $(SRC_REF4).pdf $(SEC_PUB_LIST).pdf $(SRC_REF_BERGMAN).pdf $(SRC_REF_CHENG).pdf $(SRC_REF_BOWERS).pdf $(SRC_REF_BEAUSOLEIL).pdf
 
 clean-cache :
 	@$(RM) $(CACHE_DIR)

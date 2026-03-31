@@ -207,6 +207,13 @@
     \end{tabular*}
 }
 
+\newcommand{\entryThree}[4][]{
+    \item[#1]
+    \begin{tabular*}{\linewidth-\itemindent}{l@{\hspace{\mytabcolsep}}l@{\extracolsep{\fill}}rr}
+        #2 & #3 & \multicolumn{2}{r}{#4}
+    \end{tabular*}
+}
+
 \newcommand{\txt}[2][]{
     \RaggedRight
     \item[#1]

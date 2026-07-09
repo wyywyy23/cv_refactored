@@ -2,6 +2,7 @@
 % Define \theme and \docname before inputting this file to override defaults.
 \providecommand{\theme}{black}
 \providecommand{\docname}{Curriculum Vitae}
+\providecommand{\cvRoot}{.}
 
 % Load Style
 \usepackage{wilcv}
@@ -9,13 +10,13 @@
 % Setup Commenting
 \newif\ifcoffee
 \coffeetrue % comment out to remove coffee stains
-\input{setup/comment.tex}
+\input{\cvRoot/setup/comment.tex}
 \FXRegisterAuthor{yw}{ywang}{Y.W.}
 
 % Bibliography Types
-\input{setup/bibtypes.tex}
+\input{\cvRoot/setup/bibtypes.tex}
 
-% Load Bibliography
+% Biber resolves this path from the build working directory/cache.
 \bibliography{papers}
 \nocite{*}
 

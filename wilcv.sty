@@ -132,29 +132,39 @@
 % Style Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\makeatletter
+
 % Define Key-Value Pairs
 \define@key{boxLevelOne}{list}{\def\bOne@list{#1}}
 \define@key{boxLevelTwo}{list}{\def\bTwo@list{#1}}
 
-% Levels of content blocks
-\newcommand{\boxLevelOne}[2][]{
-    \setkeys{boxLevelOne}{list=\@empty}
-    \setkeys{boxLevelOne}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0, rightmargin=1em, skipabove=0, skipbelow=0, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false]
-        \ifthenelse{\equal{\bOne@list}{}}{#2}{
-            \ifthenelse{\equal{\bOne@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
-        }
-    \end{mdframed}
+\newcommand{\wilcv@list}[2]{%
+    \ifthenelse{\equal{#1}{}}{#2}{%
+        \ifthenelse{\equal{#1}{compact}}{\listCompact{#2}}{\listRegular{#2}}%
+    }%
 }
 
-\newcommand{\boxLevelTwo}[2][]{
-    \setkeys{boxLevelTwo}{list=\@empty}
-    \setkeys{boxLevelTwo}{#1}
-    \begin{mdframed}[linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=1em, rightmargin=0, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false]
-        \ifthenelse{\equal{\bTwo@list}{}}{#2}{
-            \ifthenelse{\equal{\bTwo@list}{compact}}{\listCompact{#2}}{\listRegular{#2}}
-        }
-    \end{mdframed}
+\newcommand{\wilcv@frame}[2]{%
+    \begin{mdframed}[#1]
+        #2
+    \end{mdframed}%
+}
+
+% Levels of content blocks
+\newcommand{\boxLevelOne}[2][]{%
+    \setkeys{boxLevelOne}{list=\@empty}%
+    \setkeys{boxLevelOne}{#1}%
+    \wilcv@frame{linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=0, rightmargin=1em, skipabove=0, skipbelow=0, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false}{%
+        \wilcv@list{\bOne@list}{#2}%
+    }%
+}
+
+\newcommand{\boxLevelTwo}[2][]{%
+    \setkeys{boxLevelTwo}{list=\@empty}%
+    \setkeys{boxLevelTwo}{#1}%
+    \wilcv@frame{linewidth=0, topline=false, rightline=false, bottomline=false, leftline=false, leftmargin=1em, rightmargin=0, skipabove=\smallskipamount, skipbelow=\smallskipamount, backgroundcolor=white, innerleftmargin=0, innerrightmargin=0, innertopmargin=0, innerbottommargin=0, nobreak=false}{%
+        \wilcv@list{\bTwo@list}{#2}%
+    }%
 }
 
 % Two-column content
@@ -244,6 +254,7 @@
     \if\relax\detokenize{#1}\relax
     \else\Circled{\tiny\textbf{#1}}\fi
 }
+
 \newcommand{\entryPerson}[5]{
     \item[]%
     \begin{tabular*}{0.97\textwidth}{l@{\hskip 6pt}l}
@@ -278,7 +289,6 @@
 \setlength{\tabcolsep}{0in}
 
 % Headline with variable number of arguments
-\makeatletter
 \newcommand{\headline}[2]{%
     \noindent
     \begin{minipage}[b]{0.40\textwidth}
@@ -296,15 +306,15 @@
     #1\checknextarg}
 \newcommand{\checknextarg}{\@ifnextchar\bgroup{\gobblenextarg}{}}
 \newcommand{\gobblenextarg}[1]{\quad#1\@ifnextchar\bgroup{\gobblenextarg}{}}
-\makeatother
 % Connect shorthands
 \newcommand{\address}[1]{#1}
-\newcommand{\tel}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faMobile*}}~#1}
-\newcommand{\github}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGithub}}~\href{https://github.com/#1/}{github.com/#1}}
-\newcommand{\email}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faAt}}~\href{mailto:#1}{#1}}
-\newcommand{\website}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGlobeAsia}}~\href{https://#1}{#1}}
-\newcommand{\linkedin}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faLinkedinIn}}~\href{https://www.linkedin.com/in/#1/}{#1}}
-\newcommand{\googleScholar}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}\faGraduationCap}}~\href{https://scholar.google.com/citations?user=#1}{Google Scholar}}
+\newcommand{\wilcv@contactIcon}[1]{\raisebox{-0.25pt}{\scalebox{0.925}{\color{\theme!25}#1}}}
+\newcommand{\tel}[1]{\wilcv@contactIcon{\faMobile*}~#1}
+\newcommand{\github}[1]{\wilcv@contactIcon{\faGithub}~\href{https://github.com/#1/}{github.com/#1}}
+\newcommand{\email}[1]{\wilcv@contactIcon{\faAt}~\href{mailto:#1}{#1}}
+\newcommand{\website}[1]{\wilcv@contactIcon{\faGlobeAsia}~\href{https://#1}{#1}}
+\newcommand{\linkedin}[1]{\wilcv@contactIcon{\faLinkedinIn}~\href{https://www.linkedin.com/in/#1/}{#1}}
+\newcommand{\googleScholar}[1]{\wilcv@contactIcon{\faGraduationCap}~\href{https://scholar.google.com/citations?user=#1}{Google Scholar}}
 
 % Make author name bold: https://tex.stackexchange.com/a/327046
 \newcommand*{\boldname}[3]{%
@@ -313,12 +323,13 @@
     \def\firstinit{#3}}
 \boldname{}{}{}
 
-\renewcommand{\mkbibnamegiven}[1]{%
+\newcommand{\wilcv@mkbibname}[1]{%
     \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
     {\mkbibbold{#1}}{#1}%
 }
 
-\renewcommand{\mkbibnamefamily}[1]{%
-    \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
-    {\mkbibbold{#1}}{#1}%
-}
+\renewcommand{\mkbibnamegiven}[1]{\wilcv@mkbibname{#1}}
+
+\renewcommand{\mkbibnamefamily}[1]{\wilcv@mkbibname{#1}}
+
+\makeatother

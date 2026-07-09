@@ -307,5 +307,12 @@ TSWLatexianTemp*
 .cache
 *.pdf
 
+# Local/private CV material
+Makefile.local
+papers_zotero.bib
+sections/archive/
+sections/refs/
+standalone/
+
 # MacOS
 **.DS_Store

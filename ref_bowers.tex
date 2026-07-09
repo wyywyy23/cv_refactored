@@ -1,4 +1,4 @@
-%!TEX root = ref_4.tex
+%!TEX root = ref_bowers.tex
 \documentclass[letterpaper,10pt]{article}
 
 % Choose theme color
@@ -8,34 +8,11 @@
 % Doc Name
 \def\docname{Contact Reference 3}
 
-% Load Style
-\usepackage{wilcv}
-
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[L]{\scshape \MakeLowercase{Yuyang Wang}}
-\fancyfoot[R]{{\scshape \MakeLowercase{\docname{}}}\quad{\LARGE\sfrac{\thepage}{\pageref*{LastPage}}}}
-
-% Setup Commenting
-\newif\ifcoffee
-% \coffeetrue % comment out to remove coffee stains
-\input{setup/comment.tex}
-\FXRegisterAuthor{yw}{ywang}{Y.W.}
-
-% Bibliography Types
-\input{setup/bibtypes.tex}
-
-% Load Bibliography
-\bibliography{papers}
-\nocite{*}
-
-\def\myName{Yuyang Wang}
-% Bold Name in Bibliography
-\boldname{Wang}{Yuyang}{Y.}
+\input{setup/preamble.tex}
+\setupStandaloneFooter
 
 \begin{document}
 
-%!TEX root = ../cv_yw.tex
 \section{Contact Reference 3}
 
 \boxLevelOne[list=regular]{

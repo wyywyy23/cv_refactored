@@ -1,0 +1,31 @@
+% Shared setup for top-level CV, reference, and publication-list documents.
+% Define \theme and \docname before inputting this file to override defaults.
+\providecommand{\theme}{black}
+\providecommand{\docname}{Curriculum Vitae}
+
+% Load Style
+\usepackage{wilcv}
+
+% Setup Commenting
+\newif\ifcoffee
+\coffeetrue % comment out to remove coffee stains
+\input{setup/comment.tex}
+\FXRegisterAuthor{yw}{ywang}{Y.W.}
+
+% Bibliography Types
+\input{setup/bibtypes.tex}
+
+% Load Bibliography
+\bibliography{papers}
+\nocite{*}
+
+\def\myName{Yuyang Wang}
+% Bold Name in Bibliography
+\boldname{Wang}{Yuyang}{Y.}
+
+\newcommand{\setupStandaloneFooter}{%
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyfoot[L]{\scshape \MakeLowercase{Yuyang Wang}}
+    \fancyfoot[R]{{\scshape \MakeLowercase{\docname{}}}\quad{\LARGE\sfrac{\thepage}{\pageref*{LastPage}}}}%
+}

@@ -8,33 +8,17 @@
 % Doc Name
 \def\docname{Curriculum Vitae}
 
-% Load Style
-\usepackage{wilcv}
-
-% Setup Commenting
-\newif\ifcoffee
-% \coffeetrue % comment out to remove coffee stains
-\input{setup/comment.tex}
-\FXRegisterAuthor{yw}{ywang}{Y.W.}
-
-% Bibliography Types
-\input{setup/bibtypes.tex}
-
-% Load Bibliography
-\bibliography{papers}
-\nocite{*}
-
-\def\myName{Yuyang Wang}
-% Bold Name in Bibliography
-\boldname{Wang}{Yuyang}{Y.}
+\input{setup/preamble.tex}
 
 \begin{document}
 
 % Heading
 \headline{Yuyang \textsc{Wang}}{\connect{%
-        \address{371 Fairfield Way, Unit 4157, Rm 450\\
+        \address{
             Electrical \& Computer Engineering\\
-            Storrs, CT 06269-4157\\}}{%
+            371 Fairfield Way, Unit 4157\\
+            Storrs, CT 06269-4157\\
+        }}{%
         \tel{+1~(781)~428-0408}}{%
         \email{yuyang.wang@uconn.edu}}{%
         \website{wangyy.phd}}

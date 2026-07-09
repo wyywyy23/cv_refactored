@@ -1,0 +1,30 @@
+%!TEX root = ref_3.tex
+\documentclass[letterpaper,10pt]{article}
+
+% Choose theme color
+% See https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX#Accessing_additional_named_colors
+\def\theme{black}
+\def\cvRoot{..}
+
+% Doc Name
+\def\docname{Contact References}
+
+\input{\cvRoot/setup/preamble.tex}
+\setupStandaloneFooter
+
+\begin{document}
+
+\section{Contact References}
+
+\boxLevelOne[list=regular]{
+
+    \medskip
+    \input{\cvRoot/sections/refs/bergman.tex}
+    \medskip
+    \input{\cvRoot/sections/refs/cheng.tex}
+    \medskip
+    \input{\cvRoot/sections/refs/bowers.tex}
+
+}
+
+\end{document}

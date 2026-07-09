@@ -309,6 +309,7 @@ TSWLatexianTemp*
 
 # Local/private CV material
 Makefile.local
+bib_cleanup_rules.local.md
 papers_zotero.bib
 sections/archive/
 sections/refs/

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "rules": [
+    {
+      "root": ".",
+      "include": [
+        "papers_zotero.bib"
+      ],
+      "reason": "manual-only"
+    }
+  ]
+}

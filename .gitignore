@@ -317,3 +317,7 @@ standalone/
 
 # MacOS
 **.DS_Store
+
+# Private workspace material
+/context/
+/.facultyos/
